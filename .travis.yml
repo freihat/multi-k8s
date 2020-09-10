@@ -18,6 +18,13 @@ after_success:
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
+  # kubernetes and that is why because and why kubernetes and that is why do we need that
+  # that contains config files and this might be very helpful 
+  # we need to apply some routing rules 
+  # that is working a bit differently 
+  # ingress and that do a single deployments
+  # we need that if we want to 
+  # and we have the thing that has traffic and this is why we need that to do 
   - docker push stephengrider/multi-client
   - docker push stephengrider/multi-nginx
   - docker push stephengrider/multi-server
