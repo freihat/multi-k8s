@@ -29,6 +29,10 @@ env:
     
   
 script:
+  - rm -rf $HOME/google-cloud-sdk
+  - wget https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-309.0.0-linux-x86_64.tar.gz
+  - sudo tar xvzf google-cloud-sdk-309.0.0-linux-x86_64.tar.gz
+  - bash ./google-cloud-sdk/install.sh
   - gcloud components update kubectl 
   - gcloud auth activate-service-account --key-file service-account.json
   - gcloud config set project multi-k8s-289122
