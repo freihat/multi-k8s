@@ -8,7 +8,7 @@ env:
   before_install:
     - openssl aes-256-cbc -K $encrypted_9f3b5599b056_key -iv $encrypted_9f3b5599b056_iv -in service-account.json.enc -out service-account.json -d
     # - curl https://sdk.cloud.google.com | bash > /dev/null
-    - if [ ! -d $HOME/google-cloud-sdk/bin ]; then
+    - if [ ! -d $HOME/google-cloud-sdk ]; then
     # The install script errors if this directory already exists,
     # but Travis already creates it when we mark it as cached.
     rm -rf $HOME/google-cloud-sdk;
@@ -17,9 +17,13 @@ env:
     # - sudo apt-get install apt-transport-https ca-certificates gnupg
     # - curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
     # - sudo apt-get update && sudo apt-get install google-cloud-sd
-    - curl https://sdk.cloud.google.com | bash
+    # - curl https://sdk.cloud.google.com | bash
+    - wget https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-309.0.0-linux-x86_64.tar.gz
+    - sudo tar xvzf google-cloud-sdk-309.0.0-linux-x86_64.tar.gz
+    - bash ./google-cloud-sdk/install.sh
     # - exec -l $SHELL
-    - source ./path.bash.inc 
+    #- source ./path.bash.inc 
+    - source $HOME/gcloud/path.bash.inc
     - gcloud components update kubectl 
     - gcloud auth activate-service-account --key-file service-account.json
     - gcloud config set project multi-k8s-289122
