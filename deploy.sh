@@ -1,6 +1,6 @@
 docker build -t bkrfr/multi-client:latest -t bkrfr/multi-client:$SHA -f ./client/Dockerfile ./client
-docker build -t bkrfr/multi-server:latest -t bkrfr/multi-server:$SHA -f ./server/Docekrfile ./server
-docker build -t bkrfr/multi-worker:latest -t bkrfr/multi-worker:$SHA -f ./worker/Docekrfile ./worker
+docker build -t bkrfr/multi-server:latest -t bkrfr/multi-server:$SHA -f ./server/Dockerfile ./server
+docker build -t bkrfr/multi-worker:latest -t bkrfr/multi-worker:$SHA -f ./worker/Dockerfile ./worker
 docker push bkrfr/multi-client
 docker push bkrfr/multi-server 
 docker push bkrfr/multi-worker 
