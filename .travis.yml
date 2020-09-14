@@ -26,13 +26,6 @@ env:
     
   
 script:
-  - source ./path.bash.inc
-  - curl https://sdk.cloud.google.com | bash
-  - exec -l $SHELL
-  # - openssl aes-256-cbc -K $encrypted_9f3b5599b056_key -iv $encrypted_9f3b5599b056_iv -in service-account.json.enc -out service-account.json -d
-  # - if [ ! -d "$HOME/google-cloud-sdk/bin" ]; then rm -rf "$HOME/google-cloud-sdk"; fi
-  # - echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
-  # - sudo apt-get install apt-transport-https ca-certificates gnupg
   - gcloud components update kubectl 
   - gcloud auth activate-service-account --key-file service-account.json
   - gcloud config set project multi-k8s-289122
