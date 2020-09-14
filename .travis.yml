@@ -19,7 +19,7 @@ env:
     # - sudo apt-get update && sudo apt-get install google-cloud-sd
     - curl https://sdk.cloud.google.com | bash
     # - exec -l $SHELL
-    - source ./path.bash.inc
+    - source ./path.bash.inc 
     - gcloud components update kubectl 
     - gcloud auth activate-service-account --key-file service-account.json
     - gcloud config set project multi-k8s-289122
