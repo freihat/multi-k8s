@@ -17,9 +17,12 @@ env:
     - gcloud container clusters get-credentials multi-cluster
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
     - docker build -t bkrfr/react-test -f ./client/Dockerfile.dev ./client
+    - docker build -t bkrfr/multi-client:latest -t bkrfr/multi-client:$SHA -f ./client/Dockerfile ./client
   
 script:
-  docker run -e CI=true bkrfr/react-test npm test
+  - docker push bkrfr/multi-client
+  - kubectl version
+  - docker run -e CI=true bkrfr/react-test npm test
 
 
 deploy: 
